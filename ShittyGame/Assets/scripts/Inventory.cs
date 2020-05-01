@@ -38,13 +38,13 @@ public class Inventory : MonoBehaviour
                sht.Use();
            
            }
-        if (items[CurrentItemIndex].tag == "GrapplingGun")
-        {
-            GrapplingGun gun = items[CurrentItemIndex].GetComponent<GrapplingGun>();
-            gun.StartGrapple();
+      //  if (items[CurrentItemIndex].tag == "GrapplingGun")
+        //{
+           // GrapplingGun gun = items[CurrentItemIndex].GetComponent<GrapplingGun>();
+         //   gun.StartGrapple();
 
 
-        }
+        //}
 
 
     }
@@ -59,13 +59,13 @@ public class Inventory : MonoBehaviour
 
         }
 
-        if (items[CurrentItemIndex].tag == "GrapplingGun")
-        {
-            GrapplingGun gun = items[CurrentItemIndex].GetComponent<GrapplingGun>();
-            gun.StopGrapple();
+     //   if (items[CurrentItemIndex].tag == "GrapplingGun")
+     //   {
+          //  GrapplingGun gun = items[CurrentItemIndex].GetComponent<GrapplingGun>();
+         //   gun.StopGrapple();
 
 
-        }
+    //    }
 
 
     }

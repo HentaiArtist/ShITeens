@@ -17,7 +17,7 @@ public class DamageSystem : MonoBehaviour
    // public AudioClip deathClip;
    // public int LootAmount;
    // public float score;
-    public float SpeedMultiplier;
+
    // Animator Anim;
    // SphereCollider capsuleCollider;
    public bool isDead;

@@ -33,7 +33,7 @@ public class Shooting : MonoBehaviour
     public WeaponShootType shootType;
     public float AmmoPerShoot;
     //public float currentCharge { get; private set; }
-    LevelingUp lvl;
+    //LevelingUp lvl;
 
 
 
@@ -62,7 +62,7 @@ public class Shooting : MonoBehaviour
     void Awake()
     {
 
-        lvl = GetComponentInParent<LevelingUp>();
+      //  lvl = GetComponentInParent<LevelingUp>();
         // gunParticles = GetComponent<ParticleSystem>();
         //   Anim = GetComponent<Animator>();
        // gunAudio = GetComponent<AudioSource>();
