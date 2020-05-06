@@ -8,32 +8,32 @@ using UnityEngine.SceneManagement;
 public class DamageSystem : MonoBehaviour
 {
 
-   // public string SceneName;
+    // public string SceneName;
     public Text Hp;
     public float MaxHealth;
     public float CurHealth;
     public float sinkSpeed = 2.5f;
-   // public int scoreValue = 10;
-   // public AudioClip deathClip;
-   // public int LootAmount;
-   // public float score;
+    // public int scoreValue = 10;
+    // public AudioClip deathClip;
+    // public int LootAmount;
+    // public float score;
 
-   // Animator Anim;
-   // SphereCollider capsuleCollider;
-   public bool isDead;
+    // Animator Anim;
+    // SphereCollider capsuleCollider;
+    public bool isDead;
     bool isSinking;
     public GameObject Player;
-   
+
     void Awake()
     {
         //Anim = GetComponent<Animator>();
         //Audio = GetComponent<AudioSource>();
         // hitParticles = GetComponentInChildren<ParticleSystem>();
-       // capsuleCollider = GetComponent<SphereCollider>();
+        // capsuleCollider = GetComponent<SphereCollider>();
         CurHealth = MaxHealth;
 
 
-       // inventory = GetComponent<Inventory>();
+        // inventory = GetComponent<Inventory>();
     }
 
 
@@ -43,20 +43,17 @@ public class DamageSystem : MonoBehaviour
 
 
 
-         if (isSinking)
-          {
-             transform.Translate(-Vector3.up * sinkSpeed * Time.deltaTime);
-        
-          }
+        if (isSinking)
+        {
+            transform.Translate(-Vector3.up * sinkSpeed * Time.deltaTime);
+
+        }
 
 
         if (isDead)
             Die();
 
-        Hp.text = CurHealth.ToString();
-
-
-
+     //   Hp.text = CurHealth.ToString();
     }
 
 
@@ -88,7 +85,7 @@ public class DamageSystem : MonoBehaviour
     {
 
         if (isDead)
-            return;
+        return;
         // Audio.Play();
         CurHealth -= ContactDamage;
         if (CurHealth <= 0)
@@ -108,12 +105,12 @@ public class DamageSystem : MonoBehaviour
 
         GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
         isDead = true;
-      //  isSinking = true;
-      //  Anim.Play("Die");
+        //  isSinking = true;
+        //  Anim.Play("Die");
 
         //  Audio.clip = deathClip;
         // Audio.Play();
-       // Die();
+        // Die();
 
     }
 
@@ -121,7 +118,7 @@ public class DamageSystem : MonoBehaviour
     {
 
         //if (!Player)
-         //   score += scoreValue;
+        //   score += scoreValue;
 
         Destroy(gameObject, 2f);
     }

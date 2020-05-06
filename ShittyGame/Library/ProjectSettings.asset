@@ -645,10 +645,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: 918bd416-9a14-4873-a9cc-c9f46f8e3c7a
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: ShittyGame
+  organizationId: pxlfan
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

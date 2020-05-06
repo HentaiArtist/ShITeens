@@ -64,20 +64,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\AssetStoreOriginals\_SNAPS_PrototypingAssets\About\Scripts\Readme.cs" />
-    <Compile Include="Assets\QuickOutline\Scripts\Outline.cs" />
     <Compile Include="Assets\scripts\Controller.cs" />
     <Compile Include="Assets\scripts\DamageSystem.cs" />
+    <Compile Include="Assets\scripts\Destroy.cs" />
     <Compile Include="Assets\scripts\Inventory.cs" />
     <Compile Include="Assets\scripts\Item.cs" />
     <Compile Include="Assets\scripts\PickingUpWeapon.cs" />
     <Compile Include="Assets\scripts\Shooting.cs" />
     <Compile Include="Assets\scripts\ThirdPersonCamera.cs" />
     <Compile Include="Assets\scripts\ThirdPersonMovement.cs" />
-    <None Include="Assets\QuickOutline\Resources\Shaders\OutlineFill.shader" />
-    <None Include="Assets\QuickOutline\Readme.txt" />
-    <None Include="Assets\QuickOutline\Resources\Shaders\OutlineMask.shader" />
+    <Compile Include="Assets\Shipping Container\Scenes\PlayerController\PlayerController.cs" />
+    <None Include="Assets\Basic Metal Texture Pack\readme.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/pxlan/Desktop/Груповой Гит/ShITeensProject/ShITeens/ShittyGame/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.multiplayer-hlapi.Editor">
+      <HintPath>C:/Users/pxlan/Desktop/Груповой Гит/ShITeensProject/ShITeens/ShittyGame/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProGrids">
       <HintPath>C:/Users/pxlan/Desktop/Груповой Гит/ShITeensProject/ShITeens/ShittyGame/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
@@ -121,6 +123,9 @@
     <Reference Include="Unity.RenderPipelines.HighDefinition.Runtime">
       <HintPath>C:/Users/pxlan/Desktop/Груповой Гит/ShITeensProject/ShITeens/ShittyGame/Library/ScriptAssemblies/Unity.RenderPipelines.HighDefinition.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="com.unity.multiplayer-weaver.Editor">
+      <HintPath>C:/Users/pxlan/Desktop/Груповой Гит/ShITeensProject/ShITeens/ShittyGame/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>C:/Users/pxlan/Desktop/Груповой Гит/ShITeensProject/ShITeens/ShittyGame/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
@@ -147,6 +152,9 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>C:/Users/pxlan/Desktop/Груповой Гит/ShITeensProject/ShITeens/ShittyGame/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.multiplayer-hlapi.Runtime">
+      <HintPath>C:/Users/pxlan/Desktop/Груповой Гит/ShITeensProject/ShITeens/ShittyGame/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.10f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -679,12 +687,6 @@
     <Reference Include="Boo.Lang">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.10f1/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{364049E7-3865-5670-56A8-0508C3A0A1AE}</Project>
-      <Name>Assembly-CSharp-firstpass</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

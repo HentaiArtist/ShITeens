@@ -8,7 +8,7 @@ public class Controller : MonoBehaviour
   
    
     public KeyCode LvlUi;
-    // public KeyCode ReloadKey;
+     public KeyCode ReloadKey;
     public KeyCode ItemChangeKey;
     public KeyCode PickItemKey;
     //public Transform Hands;
@@ -19,7 +19,7 @@ public class Controller : MonoBehaviour
     Rigidbody rb;
     Animator animator;
     public GameObject LvlUpWindow;
-    ThirdPersonCamera cum;
+   /// ThirdPersonCamera cum;
   //  Vector3 Movement;
   //  public Transform player;
   //public Camera cum;
@@ -31,14 +31,13 @@ public class Controller : MonoBehaviour
         opened = true;
         Dsystem = GetComponent<DamageSystem>();
         inventory = GetComponent<Inventory>();
-
         // anim = GetComponent<Animator>();
 
     }
 
     void Start()
     {
-             cum = GetComponentInChildren<ThirdPersonCamera>();
+         //   cum = GetComponentInChildren<ThirdPersonCamera>();
         rb = GetComponent<Rigidbody>();
 
     }
@@ -54,9 +53,14 @@ public class Controller : MonoBehaviour
             GameObject go = handsscript.PickItem();
             inventory.Add(go);
         }
-        
-         ///   rb.AddForce(normalVector * jumpForce * 0.5f);
-        
+
+        if (Input.GetKeyDown(ReloadKey))
+        {
+            inventory.Reload();
+        }
+
+        ///   rb.AddForce(normalVector * jumpForce * 0.5f);
+
 
         if (Input.GetMouseButtonDown(0))// && opened == true)
         {
@@ -76,7 +80,7 @@ public class Controller : MonoBehaviour
             inventory.ChangeItem();
         }
 
-        if (Input.GetKeyDown(LvlUi))
+      /*  if (Input.GetKeyDown(LvlUi))
 
         {
             Time.timeScale = 0.1f;
@@ -105,7 +109,7 @@ public class Controller : MonoBehaviour
            
     
             
-        }
+        }*/
 
         /*  if (Input.GetMouseButton(1))
           {

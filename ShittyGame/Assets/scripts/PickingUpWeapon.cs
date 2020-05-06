@@ -8,6 +8,8 @@ public class PickingUpWeapon : MonoBehaviour
  //   public AudioSource FailAudio;
     public Transform HandsSlot;
     public float PickingDistance = 10;
+    [SerializeField]
+        Camera cam;
       void Update()
     {
                
@@ -22,8 +24,9 @@ public class PickingUpWeapon : MonoBehaviour
 
         RaycastHit hit;
         GameObject Ytem;
+        
 
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 1<<8))
+        if (Physics.Raycast(cam.transform.position,cam.transform.forward, out hit, 1<<8))
         {
             Ytem = hit.collider.gameObject;
 
@@ -36,8 +39,10 @@ public class PickingUpWeapon : MonoBehaviour
 
             if (ii != null)
             {
-               // Rbg.isKinematic = true;
+                // Rbg.isKinematic = true;
                 //Rbg.useGravity = false;
+               // Collider coll = Ytem.GetComponent<Collider>();
+               // coll.enabled = false;
                 Ytem.transform.parent = HandsSlot.transform;
                 Ytem.transform.localPosition = Vector3.zero;
                 Ytem.transform.localRotation = Quaternion.identity;

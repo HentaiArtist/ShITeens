@@ -11,15 +11,15 @@ public enum WeaponShootType
 
 public class Shooting : MonoBehaviour
 {
-   
+    RaycastHit hit;
     public LineRenderer laserLineRenderer;
     public GameObject ShootParticle;
     public GameObject OnHitParticle;
     public float DamagePerShoot;
     // public float recoilForce;
-    
+
     //public Camera Cum;
-   // public float AimPower;
+    // public float AimPower;
     public bool isfiring;
     //   public bool isCharging;
     //  public float ChargeDuration;
@@ -28,61 +28,69 @@ public class Shooting : MonoBehaviour
     //public bool IsCharge;
     //  public float LastReload;
     public float LastShot;
-   // public GameObject Projectile;
+    // public GameObject Projectile;
     public int BulletsPerShot;
     public WeaponShootType shootType;
-    public float AmmoPerShoot;
+    public int AmmoPerShoot;
     //public float currentCharge { get; private set; }
     //LevelingUp lvl;
 
 
-
+    float timer;
+    public float RayLifeTime = 0.2f;
     // ParticleSystem gunParticles;
-  //  AudioSource gunAudio;
+    AudioSource gunAudio;
     //Light gunLight;
-//float effectsDisplayTime = 0.2f;
- //   public AudioClip ShootSound;
+    float effectsDisplayTime = 0.2f;
+    //   public AudioClip ShootSound;
     public float ShootingRange;
-    //  public AudioClip ReloadSound;
-    // Animator Anim;
-  //  public float AmmoCount;
-    public float CurAmmo;
-   // public float Clip;
-    //   public Text Ammotext;
-    //  public Text AmmoCounttext;
+    public AudioClip ReloadSound;
+    Animator Anim;
+    public int AmmoCount;
+    public int CurAmmo;
+    public int Clip;
+    public Text Ammotext;
+    public Text AmmoCounttext;
     public Transform Gunslot;
     public Transform ProjectileSpawn;
-    //   public int MaxAmmo;
+    public int MaxAmmo;
     public float delayBetweenShots;
-  //  public float BulletSpeed;
+    //  public float BulletSpeed;
     //  public float ReloadSpeed;
 
     public float SpreadAngle;
 
+    public void DisableEffects()
+    {
+        laserLineRenderer.enabled = false;
+       // gunLight.enabled = false;
+    }
     void Awake()
     {
 
-      //  lvl = GetComponentInParent<LevelingUp>();
+        //  lvl = GetComponentInParent<LevelingUp>();
         // gunParticles = GetComponent<ParticleSystem>();
-        //   Anim = GetComponent<Animator>();
-       // gunAudio = GetComponent<AudioSource>();
-       // gunLight = GetComponent<Light>();
-        CurAmmo = 0;
-        //  AmmoCount = MaxAmmo;
+        Anim = GetComponent<Animator>();
+        gunAudio = GetComponent<AudioSource>();
+        // gunLight = GetComponent<Light>();
+        CurAmmo = Clip;
+        AmmoCount = MaxAmmo;
+
+
     }
 
     private void Start()
     {
         Vector3[] initLaserPositions = new Vector3[2] { Vector3.zero, Vector3.zero };
         laserLineRenderer.SetPositions(initLaserPositions);
-      //  laserLineRenderer.SetWidth(laserWidth, laserWidth);
+        //  laserLineRenderer.SetWidth(laserWidth, laserWidth);
     }
 
     void Update()
     {
 
-        // if(transform.position == Gunslot.position)
-        // CurAmmo = lvl.CurXP;
+
+
 
         switch (shootType)
         {
@@ -99,25 +107,30 @@ public class Shooting : MonoBehaviour
                     //   }
                 }
                 break;
-
-
+                //  if (transform.position == Gunslot.position)
+                //  {
+                //    Ammotext.text = CurAmmo.ToString();
+                //    AmmoCounttext.text = AmmoCount.ToString();
+                //  }
                 /*  case WeaponShootType.CHARGE:
                       ChargeDuration += Time.deltaTime;
                       break;
 
               }
-            /*  if (transform.position == Gunslot.position) {
-                  Ammotext.text = CurAmmo.ToString();
-                  AmmoCounttext.text = AmmoCount.ToString();
+            
               }*/
-        }
+       // }
+             
+        }  
+        
+        timer += Time.deltaTime;
+                if (timer >= RayLifeTime * effectsDisplayTime)
+                {
+                    DisableEffects();
+                }
     }
 
-    public void DisableEffects()
-    {
 
-       // gunLight.enabled = false;
-    }
 
 
 
@@ -158,36 +171,36 @@ public class Shooting : MonoBehaviour
 
             // if(ShtAnimParam == true)
             for (int i = 0; i < BulletsPerShot; i++)
-            { 
+            {
                 Vector3 BulletLook = GetFirigDirection();
-               RaycastHit hit;
+               
                 //Ray ray = new Ray();
 
                 laserLineRenderer.enabled = true;
+                timer = 0f;
 
-              if(Physics.Raycast(Camera.main.transform.position, BulletLook ,out hit ))
+
+                if (Physics.Raycast(Camera.main.transform.position, BulletLook, out hit))
                 {
-                   
-                //   print(hit.point);
+
+                    //   print(hit.point);
                     GameObject Enemy = hit.collider.gameObject;
                     DamageSystem dmg = Enemy.GetComponent<DamageSystem>();
-                   
-                  //  Instantiate(OnHitParticle, hit.point, Quaternion.identity);
-                      //  Instantiate(OnHitParticle, ProjectileSpawn.position, Quaternion.identity);
+                    laserLineRenderer.SetPosition(0, ProjectileSpawn.position);
+                    laserLineRenderer.SetPosition(1, hit.point);
 
+                    Instantiate(OnHitParticle, hit.point, Quaternion.identity);
+                    Instantiate(OnHitParticle, ProjectileSpawn.position, Quaternion.identity);
+                   // laserLineRenderer.enabled = false;
                     if (dmg != null)
                     {
-
                         dmg.TakeDamage(DamagePerShoot);
-                       
-
-
                     }
                     else return;
 
+
                 }
-               laserLineRenderer.SetPosition(0, ProjectileSpawn.position);
-               laserLineRenderer.SetPosition(1, hit.point);              
+
                 /*  GameObject go = Instantiate(Projectile, ProjectileSpawn.position, Quaternion.LookRotation(BulletLook));
                   Rigidbody rb = go.GetComponent<Rigidbody>();
                   rb.velocity = BulletLook * BulletSpeed;
@@ -196,40 +209,38 @@ public class Shooting : MonoBehaviour
 
             LastShot = Time.time;
 
-     //       if (ShootSound)
-          //  {
+            //       if (ShootSound)
+            //  {
             //    gunAudio.PlayOneShot(ShootSound);
-           // }
+            // }
         }
     }
- void Skryto(){ /*  public void TryReload()
+    public void TryReload()
     {
-        if (CurAmmo != Clip && AmmoCount > 0 && Time.time > LastReload + ReloadSpeed)
+        if (CurAmmo != Clip && AmmoCount > 0)
         {
             Reload();
         }
 
     }
-    
-   public void Reload() { 
-        if (CurAmmo != Clip && AmmoCount > 0 && Time.time > LastReload + ReloadSpeed)
-        {
+
+    public void Reload()
+    {       
+        
             AmmoCount -= Clip;
-            CurAmmo = Clip;
-           
-        }  
-           LastReload = Time.time;
-       
+            CurAmmo = Clip;      
     }
-    */}
 
 
-    public void AmmoRestore(float AmmoFromPickUp)
-    { 
-            CurAmmo += AmmoFromPickUp;
-    
+
+    public void AmmoRestore(int AmmoFromPickUp)
+    {
+        if (AmmoCount != MaxAmmo)
+        {
+            AmmoCount += AmmoFromPickUp;
+        }
     }
-    
+
     public void Use()
     {
         switch (shootType)
@@ -238,12 +249,12 @@ public class Shooting : MonoBehaviour
                 isfiring = true;
                 break;
 
-           /* case WeaponShootType.CHARGE:
-                ChargeDuration = 0;
-                break;*/
+            /* case WeaponShootType.CHARGE:
+                 ChargeDuration = 0;
+                 break;*/
 
             case WeaponShootType.MANUAL:
-                TryShoot(); 
+                TryShoot();
                 break;
         }
 
@@ -257,10 +268,10 @@ public class Shooting : MonoBehaviour
                 isfiring = false;
                 break;
 
-           /* case WeaponShootType.CHARGE:
-                // TODO: Shoot charges
-                ChargeDuration = 0;
-                break;*/
+            /* case WeaponShootType.CHARGE:
+                 // TODO: Shoot charges
+                 ChargeDuration = 0;
+                 break;*/
 
             case WeaponShootType.MANUAL:
                 break;

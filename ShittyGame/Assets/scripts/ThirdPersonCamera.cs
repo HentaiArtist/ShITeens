@@ -4,31 +4,64 @@ using UnityEngine;
 
 public class ThirdPersonCamera : MonoBehaviour
 {
-    public float RotationSpeed = 1;
-    public Transform Target, Player ,Slot;
-    float MouseX, MouseY;
-  
+    public Camera cam;
+    private Vector3 rotation = Vector3.zero;
+    private float cameraRotationX = 0f;
+    private float currentCameraRotationX = 0f;
+    public float cameraRotationLimit;
+    public float lookSensitivity;
+    public float SensMultiplier;
+
     void Start()
     {
       //  Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
-    private void LateUpdate()
+    private void FixedUpdate()
     {
-        CumControll();
+        PerformRotation();
+    }
+    public void Rotate(Vector3 _rotation)
+    {
+        rotation = _rotation;
+    }
+    private void Update()
+    {
+        float _yRot = Input.GetAxisRaw("Mouse X");
+
+        Vector3 _rotation = new Vector3(0f, _yRot, 0f) * lookSensitivity * SensMultiplier;
+
+        //Apply rotation
+        Rotate(_rotation);
+
+        //Calculate camera rotation as a 3D vector (turning around)
+        float _xRot = Input.GetAxisRaw("Mouse Y");
+
+        float _cameraRotationX = _xRot * lookSensitivity * SensMultiplier;
+
+        //Apply camera rotation
+        RotateCamera(_cameraRotationX);
     }
 
-    void CumControll() {
-        MouseX += Input.GetAxis("Mouse X") * RotationSpeed;
-        MouseY -= Input.GetAxis("Mouse Y") * RotationSpeed;
-        MouseY = Mathf.Clamp(MouseY,-50,30);
-       var MouseYPos = Mathf.Clamp(MouseY, -3, 3);
-        transform.LookAt(Target);
-        Target.rotation = Quaternion.Euler(MouseY, MouseX, 0);
-       // Target.position = new Vector3(MouseX, MouseY, 0);
-        Player.rotation = Quaternion.Euler(0, MouseX, 0);
-        Slot.rotation = Quaternion.Euler(MouseY, MouseX, 0);
+    void PerformRotation()
+    {
+            Rigidbody rb = GetComponentInParent<Rigidbody>();
+        rb.MoveRotation(rb.rotation * Quaternion.Euler(rotation));
+        if (cam != null)
+        {
+            // Set our rotation and clamp it
+            currentCameraRotationX -= cameraRotationX;
+            currentCameraRotationX = Mathf.Clamp(currentCameraRotationX, -cameraRotationLimit, cameraRotationLimit);
+
+            //Apply our rotation to the transform of our camera
+            cam.transform.localEulerAngles = new Vector3(currentCameraRotationX, 0f, 0f);
+        }
     }
+    public void RotateCamera(float _cameraRotationX)
+    {
+        cameraRotationX = _cameraRotationX;
+    }
+
 
 
 }

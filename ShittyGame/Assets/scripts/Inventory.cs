@@ -32,16 +32,16 @@ public class Inventory : MonoBehaviour
 
     public void Use()
     {
-           if (items[CurrentItemIndex].tag == "Gun")
-           {
-               Shooting sht = items[CurrentItemIndex].GetComponent<Shooting>();
-               sht.Use();
-           
-           }
-      //  if (items[CurrentItemIndex].tag == "GrapplingGun")
+        if (items[CurrentItemIndex].tag == "Gun")
+        {
+            Shooting sht = items[CurrentItemIndex].GetComponent<Shooting>();
+            sht.Use();
+
+        }
+        //  if (items[CurrentItemIndex].tag == "GrapplingGun")
         //{
-           // GrapplingGun gun = items[CurrentItemIndex].GetComponent<GrapplingGun>();
-         //   gun.StartGrapple();
+        // GrapplingGun gun = items[CurrentItemIndex].GetComponent<GrapplingGun>();
+        //   gun.StartGrapple();
 
 
         //}
@@ -49,66 +49,66 @@ public class Inventory : MonoBehaviour
 
     }
 
-       public void Enduse()
-       {
-           if (items[CurrentItemIndex].tag == "Gun")
-           {
-               Shooting sht = items[CurrentItemIndex].GetComponent<Shooting>();
-               sht.Enduse();
-          
-
-        }
-
-     //   if (items[CurrentItemIndex].tag == "GrapplingGun")
-     //   {
-          //  GrapplingGun gun = items[CurrentItemIndex].GetComponent<GrapplingGun>();
-         //   gun.StopGrapple();
-
-
-    //    }
-
-
-    }
-   /*
-       public void Reload()
-       {
-           if (items[CurrentItemIndex].tag == "Gun")
-           {
-               Shooting sht = items[CurrentItemIndex].GetComponent<Shooting>();
-               sht.TryReload();
-           }
-       }
-
-       public void Aim()
-       {
-           if(items[CurrentItemIndex].tag == "Gun")
-           {
-               Shooting sht = items[CurrentItemIndex].GetComponent<Shooting>();
-               sht.Aiming();
-           }
-       }
-
-       public void Notaim()
-       {
-           if (items[CurrentItemIndex].tag == "Gun")
-           {
-               Shooting sht = items[CurrentItemIndex].GetComponent<Shooting>();
-               sht.Notaiming();
-           }
-       }
-       */
-        public void Add(GameObject Ytem)
+    public void Enduse()
+    {
+        if (items[CurrentItemIndex].tag == "Gun")
         {
-
-            Item item = Ytem.GetComponent<Item>();
-            if (item == null)
-                return;
+            Shooting sht = items[CurrentItemIndex].GetComponent<Shooting>();
+            sht.Enduse();
 
 
-            items.Add(item);
         }
 
+        //   if (items[CurrentItemIndex].tag == "GrapplingGun")
+        //   {
+        //  GrapplingGun gun = items[CurrentItemIndex].GetComponent<GrapplingGun>();
+        //   gun.StopGrapple();
+
+
+        //    }
+
+
     }
+    
+        public void Reload()
+        {
+            if (items[CurrentItemIndex].tag == "Gun")
+            {
+                Shooting sht = items[CurrentItemIndex].GetComponent<Shooting>();
+                sht.TryReload();
+            }
+        }
+    /*
+        public void Aim()
+        {
+            if(items[CurrentItemIndex].tag == "Gun")
+            {
+                Shooting sht = items[CurrentItemIndex].GetComponent<Shooting>();
+                sht.Aiming();
+            }
+        }
+
+        public void Notaim()
+        {
+            if (items[CurrentItemIndex].tag == "Gun")
+            {
+                Shooting sht = items[CurrentItemIndex].GetComponent<Shooting>();
+                sht.Notaiming();
+            }
+        }
+        */
+    public void Add(GameObject Ytem)
+    {
+
+        Item item = Ytem.GetComponent<Item>();
+        if (item == null)
+            return;
+
+
+        items.Add(item);
+    }
+
+}
 
 
 
