@@ -14,7 +14,6 @@ public class ThirdPersonCamera : MonoBehaviour
 
     void Start()
     {
-      //  Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
     private void FixedUpdate()
@@ -30,30 +29,23 @@ public class ThirdPersonCamera : MonoBehaviour
         float _yRot = Input.GetAxisRaw("Mouse X");
 
         Vector3 _rotation = new Vector3(0f, _yRot, 0f) * lookSensitivity * SensMultiplier;
-
-        //Apply rotation
         Rotate(_rotation);
-
-        //Calculate camera rotation as a 3D vector (turning around)
         float _xRot = Input.GetAxisRaw("Mouse Y");
-
         float _cameraRotationX = _xRot * lookSensitivity * SensMultiplier;
 
-        //Apply camera rotation
         RotateCamera(_cameraRotationX);
     }
 
     void PerformRotation()
     {
-            Rigidbody rb = GetComponentInParent<Rigidbody>();
+        Rigidbody rb = GetComponentInParent<Rigidbody>();
         rb.MoveRotation(rb.rotation * Quaternion.Euler(rotation));
         if (cam != null)
         {
-            // Set our rotation and clamp it
+
             currentCameraRotationX -= cameraRotationX;
             currentCameraRotationX = Mathf.Clamp(currentCameraRotationX, -cameraRotationLimit, cameraRotationLimit);
 
-            //Apply our rotation to the transform of our camera
             cam.transform.localEulerAngles = new Vector3(currentCameraRotationX, 0f, 0f);
         }
     }
@@ -61,7 +53,6 @@ public class ThirdPersonCamera : MonoBehaviour
     {
         cameraRotationX = _cameraRotationX;
     }
-
-
-
 }
+
+

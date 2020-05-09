@@ -8,8 +8,8 @@ public class PickingUpWeapon : MonoBehaviour
  //   public AudioSource FailAudio;
     public Transform HandsSlot;
     public float PickingDistance = 10;
-    [SerializeField]
-        Camera cam;
+    
+     public  Camera cam;
       void Update()
     {
                
@@ -23,31 +23,27 @@ public class PickingUpWeapon : MonoBehaviour
         //Vector3 forward = Camera.main.transform.position;
 
         RaycastHit hit;
-        GameObject Ytem;
+        GameObject pickup;
+      //  GameObject Ytem;
         
 
         if (Physics.Raycast(cam.transform.position,cam.transform.forward, out hit, 1<<8))
         {
-            Ytem = hit.collider.gameObject;
+            pickup = hit.collider.gameObject;
+            Item PickeUpItem = pickup.GetComponent<Item>();
+            ;   
+            
+            if (PickeUpItem != null)
+            {               
+               
+                pickup.transform.parent = HandsSlot.transform;
+                pickup.transform.localPosition = Vector3.zero;          
+                pickup.transform.localRotation = Quaternion.identity;
+                                                            
+                return pickup;                                       
 
-
-
-
-            Item ii = Ytem.GetComponent<Item>();
-           // Rigidbody Rbg = Ytem.GetComponent<Rigidbody>();
-
-
-            if (ii != null)
-            {
-                // Rbg.isKinematic = true;
-                //Rbg.useGravity = false;
-               // Collider coll = Ytem.GetComponent<Collider>();
-               // coll.enabled = false;
-                Ytem.transform.parent = HandsSlot.transform;
-                Ytem.transform.localPosition = Vector3.zero;
-                Ytem.transform.localRotation = Quaternion.identity;
-             
-                return Ytem;
+            
+               
             }
             else
             {

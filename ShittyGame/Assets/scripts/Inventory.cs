@@ -103,9 +103,10 @@ public class Inventory : MonoBehaviour
         Item item = Ytem.GetComponent<Item>();
         if (item == null)
             return;
-
+      
 
         items.Add(item);
+        
     }
 
 }

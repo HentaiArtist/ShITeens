@@ -50,7 +50,9 @@ public class Controller : MonoBehaviour
       */  
         if (Input.GetKeyDown(PickItemKey))
         {
+          
             GameObject go = handsscript.PickItem();
+
             inventory.Add(go);
         }
 

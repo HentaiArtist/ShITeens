@@ -76,9 +76,6 @@
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/pxlan/Desktop/Груповой Гит/ShITeensProject/ShITeens/ShittyGame/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="com.unity.multiplayer-hlapi.Editor">
-      <HintPath>C:/Users/pxlan/Desktop/Груповой Гит/ShITeensProject/ShITeens/ShittyGame/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.ProGrids">
       <HintPath>C:/Users/pxlan/Desktop/Груповой Гит/ShITeensProject/ShITeens/ShittyGame/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
     </Reference>
@@ -121,9 +118,6 @@
     <Reference Include="Unity.RenderPipelines.HighDefinition.Runtime">
       <HintPath>C:/Users/pxlan/Desktop/Груповой Гит/ShITeensProject/ShITeens/ShittyGame/Library/ScriptAssemblies/Unity.RenderPipelines.HighDefinition.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="com.unity.multiplayer-weaver.Editor">
-      <HintPath>C:/Users/pxlan/Desktop/Груповой Гит/ShITeensProject/ShITeens/ShittyGame/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>C:/Users/pxlan/Desktop/Груповой Гит/ShITeensProject/ShITeens/ShittyGame/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
@@ -150,9 +144,6 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>C:/Users/pxlan/Desktop/Груповой Гит/ShITeensProject/ShITeens/ShittyGame/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="com.unity.multiplayer-hlapi.Runtime">
-      <HintPath>C:/Users/pxlan/Desktop/Груповой Гит/ShITeensProject/ShITeens/ShittyGame/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.10f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

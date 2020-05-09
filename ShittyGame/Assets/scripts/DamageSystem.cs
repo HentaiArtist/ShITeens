@@ -21,7 +21,7 @@ public class DamageSystem : MonoBehaviour
     // Animator Anim;
     // SphereCollider capsuleCollider;
     public bool isDead;
-    bool isSinking;
+    bool isSinking = false;
     public GameObject Player;
 
     void Awake()
@@ -55,8 +55,6 @@ public class DamageSystem : MonoBehaviour
 
      //   Hp.text = CurHealth.ToString();
     }
-
-
     public void TakeDamage(float damage)
     {
         if (isDead)
@@ -71,7 +69,6 @@ public class DamageSystem : MonoBehaviour
             isDead = true;
         }
     }
-
     public void HealthRestore(float Heal)
     {
         CurHealth += Heal;
@@ -80,7 +77,6 @@ public class DamageSystem : MonoBehaviour
             CurHealth = MaxHealth;
         }
     }
-
     public void TakeContactDamage(float ContactDamage)
     {
 
@@ -93,7 +89,6 @@ public class DamageSystem : MonoBehaviour
             Death();
         }
     }
-
     void Death()
 
     {

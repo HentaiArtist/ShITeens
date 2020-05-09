@@ -57,7 +57,7 @@ public class Shooting : MonoBehaviour
     public float delayBetweenShots;
     //  public float BulletSpeed;
     //  public float ReloadSpeed;
-
+    Camera cum;
     public float SpreadAngle;
 
     public void DisableEffects()
@@ -147,12 +147,13 @@ public class Shooting : MonoBehaviour
 
     public Vector3 GetFirigDirection()
     {
+         cum = GetComponentInParent<Camera>();
         float Spread = Random.Range(0, SpreadAngle);
-        Vector3 dir = (Camera.main.transform.forward);
+        Vector3 dir = (cum.transform.forward);
         // print(dir);
-        dir = Quaternion.AngleAxis(Spread, Camera.main.transform.right) * dir;
+        dir = Quaternion.AngleAxis(Spread, cum.transform.right) * dir;
         // print(dir);
-        dir = Quaternion.AngleAxis(Random.Range(0, 360), Camera.main.transform.forward) * dir;
+        dir = Quaternion.AngleAxis(Random.Range(0, 360), cum.transform.forward) * dir;
         // print(dir);
         return dir;
     }
@@ -180,7 +181,7 @@ public class Shooting : MonoBehaviour
                 timer = 0f;
 
 
-                if (Physics.Raycast(Camera.main.transform.position, BulletLook, out hit))
+                if (Physics.Raycast(cum.transform.position, BulletLook, out hit))
                 {
 
                     //   print(hit.point);
