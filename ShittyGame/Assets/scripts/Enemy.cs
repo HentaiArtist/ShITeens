@@ -100,6 +100,7 @@ public class Enemy : MonoBehaviour //автор тов. Сергей Иевле�
 
     private void Attack()
     {
+        transform.LookAt(player.transform.position);
         if (currentReloadTime > reloadTime)
         {
             Invoke("DamagePlayer", timeBeforeAttack);
@@ -107,7 +108,7 @@ public class Enemy : MonoBehaviour //автор тов. Сергей Иевле�
         }
     }
 
-    private void DamagePlayer()
+    public virtual void DamagePlayer()
     {
         if (Vector3.Distance(transform.position, player.transform.position) <= attackDistance)
         {
@@ -122,7 +123,7 @@ public class Enemy : MonoBehaviour //автор тов. Сергей Иевле�
             anim.SetBool(movingParameterName, true);
             anim.SetBool(attackingParameterName, false);
         }
-        if (state == EnemyState.Staying)
+        if (state == EnemyState.Staying || !agent.hasPath)
         {
             anim.SetBool(movingParameterName, false);
             anim.SetBool(attackingParameterName, false);
