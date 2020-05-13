@@ -30,16 +30,23 @@ public class PickingUpWeapon : MonoBehaviour
         if (Physics.Raycast(cam.transform.position,cam.transform.forward, out hit, 1<<8))
         {
             pickup = hit.collider.gameObject;
-            Item PickeUpItem = pickup.GetComponent<Item>();
+            Item PickeUpCmpoet = pickup.GetComponent<Item>();
             ;   
             
-            if (PickeUpItem != null)
-            {               
-               
+            if (PickeUpCmpoet != null)
+            {
+           
                 pickup.transform.parent = HandsSlot.transform;
                 pickup.transform.localPosition = Vector3.zero;          
-                pickup.transform.localRotation = Quaternion.identity;
-                                                            
+               
+                Animator animator = pickup.GetComponent<Animator>();
+                animator.enabled = true;
+                 Collider collider = pickup.GetComponent<Collider>();
+                collider.enabled = false; 
+                pickup.transform.rotation = new Quaternion(0, 0, 0, 0);
+                pickup.transform.localRotation = new Quaternion(0, 0, 0, 0);
+
+
                 return pickup;                                       
 
             

@@ -27,7 +27,8 @@ public class Shooting : MonoBehaviour
     //  public float AmmoNeededToStartCharge;
     //public bool IsCharge;
     //  public float LastReload;
-    public float LastShot;
+    [SerializeField]
+     float LastShot;
     // public GameObject Projectile;
     public int BulletsPerShot;
     public WeaponShootType shootType;
@@ -36,7 +37,7 @@ public class Shooting : MonoBehaviour
     //LevelingUp lvl;
 
 
-    float timer;
+    float RayTimer;
     public float RayLifeTime = 0.2f;
     // ParticleSystem gunParticles;
     AudioSource gunAudio;
@@ -83,6 +84,8 @@ public class Shooting : MonoBehaviour
     {
         Vector3[] initLaserPositions = new Vector3[2] { Vector3.zero, Vector3.zero };
         laserLineRenderer.SetPositions(initLaserPositions);
+        Anim = GetComponent<Animator>();
+        Anim.enabled = false;
         //  laserLineRenderer.SetWidth(laserWidth, laserWidth);
     }
 
@@ -123,8 +126,8 @@ public class Shooting : MonoBehaviour
              
         }  
         
-        timer += Time.deltaTime;
-                if (timer >= RayLifeTime * effectsDisplayTime)
+        RayTimer += Time.deltaTime;
+                if (RayTimer >= RayLifeTime * effectsDisplayTime)
                 {
                     DisableEffects();
                 }
@@ -139,6 +142,7 @@ public class Shooting : MonoBehaviour
         if (CurAmmo != 0 && Time.time > LastShot + delayBetweenShots)
         {
             Shoot();
+
             return true;
         }
         return false;
@@ -160,12 +164,13 @@ public class Shooting : MonoBehaviour
 
     public void Shoot()
     {
+        LastShot = Time.time;
         if (CurAmmo >= AmmoPerShoot)
         {
             CurAmmo -= AmmoPerShoot;
-
+            Instantiate(OnHitParticle, ProjectileSpawn.position, Quaternion.identity);
             // bool ShtAnimParam = true;
-            //  Anim.Play("Shooting");
+            Anim.Play("Shooting");
             // Anim.SetBool("IsShooting", ShtAnimParam);
 
             //ShtAnimParam = true;
@@ -178,7 +183,7 @@ public class Shooting : MonoBehaviour
                 //Ray ray = new Ray();
 
                 laserLineRenderer.enabled = true;
-                timer = 0f;
+                RayTimer = 0f;
 
 
                 if (Physics.Raycast(cum.transform.position, BulletLook, out hit))
@@ -191,7 +196,7 @@ public class Shooting : MonoBehaviour
                     laserLineRenderer.SetPosition(1, hit.point);
 
                     Instantiate(OnHitParticle, hit.point, Quaternion.identity);
-                    Instantiate(OnHitParticle, ProjectileSpawn.position, Quaternion.identity);
+                 
                    // laserLineRenderer.enabled = false;
                     if (dmg != null)
                     {
@@ -208,13 +213,14 @@ public class Shooting : MonoBehaviour
                   */
             }
 
-            LastShot = Time.time;
+            
 
             //       if (ShootSound)
             //  {
             //    gunAudio.PlayOneShot(ShootSound);
             // }
         }
+        
     }
     public void TryReload()
     {
@@ -229,7 +235,8 @@ public class Shooting : MonoBehaviour
     {       
         
             AmmoCount -= Clip;
-            CurAmmo = Clip;      
+            CurAmmo = Clip;
+        Anim.Play("Reload");
     }
 
 
