@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 ﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":true,"showMaterialUpdate":false,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true},"in2DMode":false,"pivot":{"x":-20.284456253051759,"y":2.351426124572754,"z":20.216449737548829},"rotation":{"x":-0.006898877210915089,"y":0.985271692276001,"z":0.16628523170948029,"w":0.041933875530958179},"size":3.2280209064483644,"orthographic":false}
+=======
+﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":true,"showMaterialUpdate":false,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true},"in2DMode":false,"pivot":{"x":-16.763385772705079,"y":11.440633773803711,"z":13.174089431762696},"rotation":{"x":0.23028288781642915,"y":-0.1894982010126114,"z":0.04577160254120827,"w":0.9533973336219788},"size":-0.2624819874763489,"orthographic":false}
+>>>>>>> remotes/origin/newEnemies
