@@ -149,9 +149,10 @@ public class PlayerMovement : MonoBehaviour
         // Movement while sliding
         if (grounded && crouching) multiplierV = 0f;
 
-        //Apply forces to move player
-        rb.AddForce(orientation.transform.forward * y * moveSpeed * Time.deltaTime * multiplier * multiplierV);
-        rb.AddForce(orientation.transform.right * x * moveSpeed * Time.deltaTime * multiplier);
+        //redacted but proper movement
+        Vector3 step = orientation.transform.forward * y * moveSpeed * Time.deltaTime * multiplier * multiplierV + orientation.transform.right * x * moveSpeed * Time.deltaTime * multiplier;
+        Vector3 newPos = new Vector3(step.x, 0, step.z);
+        rb.MovePosition(rb.position + newPos);
     }
 
     private void Jump()

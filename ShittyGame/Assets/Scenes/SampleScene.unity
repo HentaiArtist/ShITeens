@@ -272,6 +272,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5551932201749481547, guid: cb35b81b7ac4d104da3066b0dcebf7a7,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb35b81b7ac4d104da3066b0dcebf7a7, type: 3}
 --- !u!1001 &8280705507767769186
@@ -415,5 +420,15 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2009503842}
+    - target: {fileID: 8411508106122453100, guid: 8b2eca1d1e7307e44acbcee9e98a6132,
+        type: 3}
+      propertyPath: RigidbodyLifetime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8411508106122453100, guid: 8b2eca1d1e7307e44acbcee9e98a6132,
+        type: 3}
+      propertyPath: JamPower
+      value: 1400
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b2eca1d1e7307e44acbcee9e98a6132, type: 3}
