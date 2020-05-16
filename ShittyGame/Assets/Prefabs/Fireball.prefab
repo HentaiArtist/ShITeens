@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11ff2e95a4c08d74ca3c86090bcf2f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 8
   flyDistance: 20
   damage: 10
 --- !u!54 &5700329076287555116
@@ -85,6 +85,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2772923256973026572}
     m_Modifications:
+    - target: {fileID: 100000, guid: bf495eacf58e31146ab012aa89ac68da, type: 3}
+      propertyPath: m_Name
+      value: FireComplex
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bf495eacf58e31146ab012aa89ac68da, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -128,10 +132,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: bf495eacf58e31146ab012aa89ac68da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: bf495eacf58e31146ab012aa89ac68da, type: 3}
-      propertyPath: m_Name
-      value: FireComplex
       objectReference: {fileID: 0}
     - target: {fileID: 19800014, guid: bf495eacf58e31146ab012aa89ac68da, type: 3}
       propertyPath: InitialModule.startSizeY.minMaxState
