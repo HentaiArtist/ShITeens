@@ -5,12 +5,22 @@ using UnityEngine;
 public class Particle : MonoBehaviour
 {
     public GameObject player;
-    public GameObject explosion;
-    public void OnCollisionEnter(Collision collision)
+    public GameObject[] ToCreate ;
+    public GameObject[] ToSetActive;
+    bool activated;
+    public void OnTriggerEnter(Collision collision)
     {
-        if (collision.gameObject == player)
+        if (collision.gameObject == player && !activated)
         {
-            Instantiate(explosion, transform.position, Quaternion.identity);
+            activated = true;
+            foreach (GameObject go in ToCreate)
+            {
+                Instantiate(go, transform.position, Quaternion.identity);
+            }
+            foreach (GameObject go in ToSetActive){
+                go.SetActive(true);
+
+            }
         }
     }
 }
