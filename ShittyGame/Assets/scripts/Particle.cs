@@ -7,8 +7,8 @@ public class Particle : MonoBehaviour
     public GameObject player;
     public GameObject[] ToCreate ;
     public GameObject[] ToSetActive;
-    bool activated;
-    public void OnTriggerEnter(Collision collision)
+    bool activated = false ;
+    public void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject == player && !activated)
         {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.HDPipeline;
 
 public class Door : MonoBehaviour
 {
@@ -18,22 +19,14 @@ public class Door : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            if (closed)
-            {
-                animator.Play("Open");
-                closed = false;
-            }
+            animator.Play("Open");
+            Invoke("Close", 2f);
 
-            if (!closed)
-            {
-                animator.Play("Close");
-                closed = true;
-            }
         }
     }
 
-    private void Update()
+   void Close ()
     {
-        
+        animator.Play("Close");
     }
 }
