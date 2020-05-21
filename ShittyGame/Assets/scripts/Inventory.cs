@@ -103,9 +103,17 @@ public class Inventory : MonoBehaviour
         Item item = Ytem.GetComponent<Item>();
         if (item == null)
             return;
-      
-
         items.Add(item);
+
+
+
+       /* if (items[CurrentItemIndex] != null)
+        {
+            Item it = items[CurrentItemIndex].GetComponent<Item>();
+            it.HideItem();
+        }
+        else return;*/
+       
         
     }
 

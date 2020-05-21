@@ -30,10 +30,10 @@ public class PickingUpWeapon : MonoBehaviour
         if (Physics.Raycast(cam.transform.position,cam.transform.forward, out hit, 1<<8))
         {
             pickup = hit.collider.gameObject;
-            Item PickeUpCmpoet = pickup.GetComponent<Item>();
+            Item PickeUpCompoet = pickup.GetComponent<Item>();
             ;   
             
-            if (PickeUpCmpoet != null)
+            if (PickeUpCompoet != null)
             {
            
                 pickup.transform.parent = HandsSlot.transform;
